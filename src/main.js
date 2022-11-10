@@ -37,6 +37,13 @@ Vue.config.productionTip = false
 
 // 引入相关API请求接口
 import API from '@/api'
+
+// 引入全局组件 
+import CategorySelect from '@/components/CategorySelect'    // --- 三级联动
+
+// 注册全局组件
+Vue.component(CategorySelect.name, CategorySelect)     // --- 三级联动
+
 // 组件实例原型的原型指向 Vue.prototype , 任意组件可以使用API相关的接口
 Vue.prototype.$API = API
 
