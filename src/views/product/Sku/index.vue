@@ -6,12 +6,12 @@
 
 
 <script>
-    export default {
-    name:'Sku'
-    }
+export default {
+    name: 'Sku'
+}
 </script>
 
 
 <style scoped>
-    
+
 </style>

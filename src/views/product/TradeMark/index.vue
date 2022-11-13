@@ -107,10 +107,6 @@
 </template>
 
 <script>
-// import { Row } from "element-ui";
-
-import { async } from "q";
-
 export default {
   name: "TradeMark",
   data() {
