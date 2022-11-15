@@ -58,3 +58,7 @@ export const reqAttrInfoList = (category1Id, category2Id, category3Id) =>
 // 添加sku
 // url: /admin/product/saveSkuInfo      method: post
 export const reqAddSku = (skuInfo) => request({ url: '/admin/product/saveSkuInfo', method: 'post', data: skuInfo })
+
+// 获取Sku列表数据
+// url: /admin/product/findBySpuId/{spuId}  method: get    parameters: spuId
+export const reqSkuList = (spuId) => request({ url: `/admin/product/findBySpuId/${spuId}`, method: 'get' })
