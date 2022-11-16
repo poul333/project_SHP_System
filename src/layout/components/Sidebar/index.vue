@@ -1,17 +1,10 @@
 <template>
-  <div :class="{'has-logo':showLogo}">
+  <div :class="{ 'has-logo': showLogo }">
     <logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
-      <el-menu
-        :default-active="activeMenu"
-        :collapse="isCollapse"
-        :background-color="variables.menuBg"
-        :text-color="variables.menuText"
-        :unique-opened="false"
-        :active-text-color="variables.menuActiveText"
-        :collapse-transition="false"
-        mode="vertical"
-      >
+      <el-menu :default-active="activeMenu" :collapse="isCollapse" :background-color="variables.menuBg"
+        :text-color="variables.menuText" :unique-opened="false" :active-text-color="variables.menuActiveText"
+        :collapse-transition="false" mode="vertical">
         <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
     </el-scrollbar>
@@ -31,7 +24,9 @@ export default {
       'sidebar'
     ]),
     routes() {
-      return this.$router.options.routes
+      // sliderbar: 需要遍历的应该是仓库计算完毕的全部路由
+      // return this.$router.options.routes
+      return this.$store.state.user.resultAllRoutes
     },
     activeMenu() {
       const route = this.$route

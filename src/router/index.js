@@ -1,3 +1,5 @@
+// #region
+
 // import Vue from 'vue'
 // import Router from 'vue-router'
 
@@ -141,6 +143,7 @@
 // }
 
 // export default router
+// #endregion
 
 
 import Vue from 'vue'
@@ -175,6 +178,8 @@ import Layout from '@/layout'
  * a base page that does not have permission requirements
  * all roles can be accessed
  */
+// 进行路由拆分
+// 常量路由 均可访问的组件
 export const constantRoutes = [
   {
     path: '/login',
@@ -199,7 +204,10 @@ export const constantRoutes = [
       meta: { title: '首页', icon: 'dashboard' }
     }]
   },
+]
 
+// 异步路由 : 不同用户（角色），需要过滤选出的路由
+export const asyncRoutes = [
   // 权限相关
   {
     name: 'Acl',
@@ -281,10 +289,32 @@ export const constantRoutes = [
       },
     ]
   },
-
-  // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
+  // 测试管理
+  {
+    path: '/test',
+    component: Layout,
+    name: "Test",
+    meta: { title: '测试管理', icon: 'el-icon-goods' },
+    children: [
+      {
+        path: 'test1',
+        name: 'Test1',
+        component: () => import('@/views/Test/Test1'),
+        meta: { title: '测试管理1' }
+      },
+      {
+        path: 'test2',
+        name: 'Test2',
+        component: () => import('@/views/Test/Test2'),
+        meta: { title: '测试管理2' }
+      },
+    ]
+  },
 ]
+
+// 任意路由：当路径出现错误，重定向到404
+export const anyRoutes = { path: '*', redirect: '/404', hidden: true } // 404 page must be placed at the end !!!
+
 
 const createRouter = () => new Router({
   // mode: 'history', // require service support
